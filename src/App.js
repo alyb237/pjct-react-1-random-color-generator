@@ -2,16 +2,30 @@ import './App.css';
 import styled from '@emotion/styled';
 import randomColor from 'randomcolor';
 import { useState } from 'react';
-import inputs from './input';
+
+const Button = styled.button`
+  color: pink;
+  border-radius: 25px;
+  border-color: pink;
+`;
 
 //emotion/styled div
 const Div = styled.div`
   background-color: ${(props) => props.bg};
-  width: auto;
-  height: 100px;
+  width: 200px;
+  height: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.5s linear;
+  box-sizing: border-box;
+  border-radius: 25px;
+  position: fixed;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  resize: auto;
+  overflow: auto;
 `;
 
 export default function App() {
@@ -29,7 +43,7 @@ export default function App() {
       <br />
       <h2>Random Color Generator </h2>
       <br />
-      <button
+      <Button
         onClick={() =>
           setColor(
             randomColor.randomColor({ hue: hue, luminosity: luminosity }),
@@ -37,7 +51,7 @@ export default function App() {
         }
       >
         Generate
-      </button>
+      </Button>
       <h3>Enter a Color:</h3>
       <input
         onChange={(event) => {

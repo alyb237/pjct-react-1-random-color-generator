@@ -2,8 +2,9 @@ import './App.css';
 import styled from '@emotion/styled';
 import randomColor from 'randomcolor';
 import { useState } from 'react';
+import inputs from './input';
 
-//component
+//emotion/styled div
 const Div = styled.div`
   background-color: ${(props) => props.bg};
   width: auto;
@@ -16,6 +17,9 @@ const Div = styled.div`
 export default function App() {
   //generate random color state
   const [generateColor, setColor] = useState(randomColor.randomColor());
+  const [hue, setHue] = useState('');
+  const [luminosity, setLuminosity] = useState('');
+
   return (
     <div className="App">
       <br />
@@ -24,6 +28,22 @@ export default function App() {
       <button onClick={() => setColor(randomColor.randomColor())}>
         Generate
       </button>
+      <h3>Enter a Color</h3>
+      <input
+        onChange={(event) => {
+          setHue(event.currentTarget.value);
+        }}
+        value={hue}
+      ></input>
+      <br />
+      <br />
+      <h3>Enter a Luminosity: Light or Dark</h3>
+      <input
+        onChange={(event) => {
+          setLuminosity(event.currentTarget.value);
+        }}
+        value={luminosity}
+      ></input>
       <br />
       <br />
       <Div bg={generateColor}>Generated Color: {generateColor}</Div>
@@ -31,6 +51,7 @@ export default function App() {
   );
 }
 
+//randomColor.randomColor({ hue: hue }),
 //console.log('flkds');
 //export default App;
 //console.log(chalk.hex(rcolor));

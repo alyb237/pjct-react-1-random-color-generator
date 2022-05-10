@@ -16,19 +16,29 @@ const Div = styled.div`
 
 export default function App() {
   //generate random color state
-  const [generateColor, setColor] = useState(randomColor.randomColor());
+
   const [hue, setHue] = useState('');
   const [luminosity, setLuminosity] = useState('');
+
+  const [generateColor, setColor] = useState(
+    randomColor.randomColor({ hue: hue, luminosity: luminosity }),
+  );
 
   return (
     <div className="App">
       <br />
       <h2>Random Color Generator </h2>
       <br />
-      <button onClick={() => setColor(randomColor.randomColor())}>
+      <button
+        onClick={() =>
+          setColor(
+            randomColor.randomColor({ hue: hue, luminosity: luminosity }),
+          )
+        }
+      >
         Generate
       </button>
-      <h3>Enter a Color</h3>
+      <h3>Enter a Color:</h3>
       <input
         onChange={(event) => {
           setHue(event.currentTarget.value);
@@ -50,12 +60,3 @@ export default function App() {
     </div>
   );
 }
-
-//randomColor.randomColor({ hue: hue }),
-//console.log('flkds');
-//export default App;
-//console.log(chalk.hex(rcolor));
-//console.log(chalk.hex(randomColor()).bold('Bold gray!'));
-//console.log(chalk.red('Hello world!'));
-
-//{chalk.hex.(randomColor())}

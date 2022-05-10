@@ -9,7 +9,7 @@ const Button = styled.button`
   border-color: pink;
 `;
 
-//emotion/styled div
+// emotion/styled div
 const Div = styled.div`
   background-color: ${(props) => props.bg};
   width: 200px;
@@ -29,12 +29,12 @@ const Div = styled.div`
 `;
 
 export default function App() {
-  //generate random color state
+  // generate random color state
 
   const [hue, setHue] = useState('');
   const [luminosity, setLuminosity] = useState('');
 
-  const [generateColor, setColor] = useState(
+  const [color, setColor] = useState(
     randomColor.randomColor({ hue: hue, luminosity: luminosity }),
   );
 
@@ -58,7 +58,7 @@ export default function App() {
           setHue(event.currentTarget.value);
         }}
         value={hue}
-      ></input>
+      />
       <br />
       <br />
       <h3>Enter a Luminosity: Light or Dark</h3>
@@ -67,10 +67,10 @@ export default function App() {
           setLuminosity(event.currentTarget.value);
         }}
         value={luminosity}
-      ></input>
+      />
       <br />
       <br />
-      <Div bg={generateColor}>Generated Color: {generateColor}</Div>
+      <Div bg={color}>Generated Color: {color}</Div>
     </div>
   );
 }
